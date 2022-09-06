@@ -1,8 +1,9 @@
 import React from "react";
+import ItemCount from "./ItemCount";
 
 const ItemList = ({ejemplo}) => {
     return (
-            <p>{ejemplo}</p>
+            <ItemCount stock={5} initial={1} onAdd={0} />
         
     )
 }
