@@ -1,7 +1,7 @@
 import logo from './logo.png';
 import './App.css';
 import Nav from './components/Navbar';
-import ItemList from './components/ItemListContainer';
+import ItemListContainer from './components/ItemListContainer';
 
 function App() {
   return (
@@ -13,7 +13,8 @@ function App() {
           <h1>GameStore</h1>
         </div>
       </header>
-      <ItemList  />
+
+      <ItemListContainer  />
     </div>
   );
 }

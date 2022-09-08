@@ -31,7 +31,7 @@ const ItemCount = ({stock, initial, onAdd}) =>{
                     <p>Producto X</p>
                     <div className="input-group">
                         <input type="button" className="btn btn-secondary" value="-" onClick={() => {menoscantidad(cantidad - 1)}} />
-                        <input type="text" className="form-control text-center" value={cantidad} />
+                        <input type="text" className="form-control text-center" value={cantidad} onChange={() =>{}} />
                         <input type="button" className="btn btn-secondary" value="+" onClick={() => {mascantidad(cantidad + 1)}} />
                     </div>
                     <div className="py-3">
