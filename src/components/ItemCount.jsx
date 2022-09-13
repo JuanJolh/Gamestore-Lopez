@@ -28,7 +28,6 @@ const ItemCount = ({stock, initial, onAdd}) =>{
         <div className="container py-5">
             <div className="row">
                 <div className="col-md-2">
-                    <p>Producto X</p>
                     <div className="input-group">
                         <input type="button" className="btn btn-secondary" value="-" onClick={() => {menoscantidad(cantidad - 1)}} />
                         <input type="text" className="form-control text-center" value={cantidad} onChange={() =>{}} />
