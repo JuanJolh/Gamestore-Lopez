@@ -2,18 +2,21 @@ import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
 import ItemDetail from "./ItemDetail";
-import { productos } from "./productos";
+import { productos } from "./Lista-Productos";
+import { useParams } from "react-router-dom";
 
 const ItemDetailContainer = () => {
-    const [item, setItem] = useState({});
+    const [item, setItem] = useState([]);
+    const {id} = useParams();
 
     useEffect(() => {
+        let producto = id;
         const getProduct = () =>
             new Promise((resolve, reject) => {
-                const product = productos.find((prod) => prod.id === 1)
-                setTimeout(() => {
+                const product = productos.find(prod => prod.id === parseInt(id));
+                console.log(product);
                     resolve(product);
-                }, 2000);
+                
         });
 
         getProduct()
@@ -23,7 +26,7 @@ const ItemDetailContainer = () => {
 
 
 
-        }, []);
+        }, [id]);
 
     return (
         <div className="container">
