@@ -10,17 +10,14 @@ const ItemDetailContainer = () => {
     const {id} = useParams();
 
     useEffect(() => {
-        let producto = id;
         const getProduct = () =>
             new Promise((resolve, reject) => {
                 const product = productos.find(prod => prod.id === parseInt(id));
-                console.log(product);
                     resolve(product);
                 
         });
 
-        getProduct()
-        .then((info) => {
+        getProduct().then((info) => {
             setItem(info)
         })
 

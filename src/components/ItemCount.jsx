@@ -1,47 +1,41 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
-const ItemCount = ({stock, initial, onAdd}) =>{
-    const [cantidad, setCantidad] = useState(initial);
+const ItemCount = ({initial, stock, onAdd}) => {
+    const [counter, setCounter] = useState(initial);
     const [itemStock, setItemStock] = useState(stock);
-    const [itemAdd, setItemAdd] = useState(onAdd);
 
     const menoscantidad = (valor) => {
         if (valor > 0) {
-            setCantidad(valor);
+            setCounter(valor);
         }
     }
+
     const mascantidad = (valor) => {
         if (valor <= itemStock) {
-            setCantidad(valor);
+            setCounter(valor);
         }
     }
 
-    const agregarproductos = (valor) => {
-        if (itemStock > 0){
-            setItemStock(itemStock - cantidad);
-            setItemAdd(itemAdd + cantidad);
-        }
+    const agregarProductos = () => {
+        if (counter <= itemStock) {
+            onAdd(counter);
+            setItemStock(itemStock - counter);
+            setCounter(itemStock - counter);
+        }   
     }
 
+    useEffect(() => {
+        setItemStock(stock);
+    }, [stock]);
 
     return (
-        <div className="container py-5">
-            <div className="row">
-                <div className="col-md-2">
-                    <div className="input-group">
-                        <input type="button" className="btn btn-secondary" value="-" onClick={() => {menoscantidad(cantidad - 1)}} />
-                        <input type="text" className="form-control text-center" value={cantidad} onChange={() =>{}} />
-                        <input type="button" className="btn btn-secondary" value="+" onClick={() => {mascantidad(cantidad + 1)}} />
-                    </div>
-                    <div className="py-3">
-                        <input type="button" className="btn btn-secondary" value="Agregar al Carrito" onClick={() => {agregarproductos()}}  />
-                        <p>Total Productos: {itemAdd} </p>
-                    </div>
-                </div>
-            </div>
+        <div className="row">
+            <div className="col-md-6">
+                <p><input type="button" className="btn btn-primary" value="-" onClick={() => {menoscantidad(counter - 1)}} />   {counter}  <input type="button" className="btn btn-primary" value="+" onClick={() => {mascantidad(counter + 1)}} /></p>
+                <p><input type="button" className="btn btn-primary" value="Agregar" onClick={() => {agregarProductos()}} /></p>
+            </div>        
         </div>
     )
-
-}
+};
 
 export default ItemCount;

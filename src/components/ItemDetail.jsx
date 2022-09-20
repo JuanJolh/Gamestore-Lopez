@@ -1,7 +1,14 @@
 import React from "react";
 import ItemCount from "./ItemCount"
+import { useState} from "react";
+import { Link } from "react-router-dom";
 
 const ItemDetail = ({item}) => {
+    const [counter, setCounter] = useState(0);
+    const onAdd = (counter) => {
+        setCounter(counter);
+    }
+
         return (
             <div className="container col-xxl-8 px-4 py-5">
                 <div className="row flex-lg-row-reverse align-items-center g-5 py-5">
@@ -13,8 +20,10 @@ const ItemDetail = ({item}) => {
                         <p className="lead">{item.descripcion}</p>
                         <p className="lead">Marca: {item.marca}</p>
                         <p className="lead">Precio: ${item.precio}</p>
+                        <p className="lead">Stock: {item.stock}</p>
                     </div>
                 </div>
+                {counter === 0 ? <ItemCount initial={1} stock={item.stock} onAdd={onAdd} /> : <Link to={"/cart"} className="btn btn-primary">Ir al Carrito</Link>}
             </div>
         )
 }
