@@ -5,11 +5,13 @@ import Footer from './components/footer';
 import ItemListContainer from "./components/ItemListContainer";
 import ItemDetailContainer from "./components/ItemDetailContainer"
 import Cart from './components/Cart';
+import Provider from './components/context/Context';
 
 
 function App() {
   return (
     <div>
+      <Provider>
         <BrowserRouter>
           <Nav />
           <Routes>
@@ -20,6 +22,7 @@ function App() {
           </Routes>
           <Footer/>
         </BrowserRouter>
+      </Provider>
     </div>
   );
 }
