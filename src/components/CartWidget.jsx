@@ -8,11 +8,8 @@ const Cart = () => {
 
     return (
             <div>
-            <button type="button" className="btn fondo_naranja position-relative me-1" title="Vaciar Carrito" onClick={()=> {clear()}}>
-            <i class="fa-solid fa-trash"></i>
-            </button>
             <Link to={"/cart"}>
-                <button type="button" className="btn fondo_naranja position-relative" title="Ir al Carrito">
+                <button type="button" className="btn position-relative" title="Ir al Carrito">
                 <i className="fa-solid fa-cart-shopping"></i>
                     <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">{cartTotal()}</span>
                 </button>
