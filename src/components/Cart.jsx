@@ -14,7 +14,7 @@ const Cart = () => {
                         <tr>
                             <td colSpan={"5"} className="text-end">
                                 <Link onClick={() => {clear()}}>
-                                    <button className="btn fondo_rojo" title="Vaciar Carrito">Vaciar Carrito <i class="fa-solid fa-trash"></i></button>
+                                    <button className="btn fondo_rojo" title="Vaciar Carrito">Vaciar Carrito <i className="fa-solid fa-trash"></i></button>
                                 </Link>
                             </td>
                         </tr>

@@ -1,39 +1,22 @@
-import React, { useEffect } from "react";
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import ItemList from "./ItemList"
-import { productos } from "./Lista-Productos";
+import { getFirestore, collection, getDocs, query, where } from "firebase/firestore";
+import ItemList from "./ItemList";
 
 const ItemListContainer = () => {
+    const {id} = useParams();
     const [items, setItems] = useState([]);
-    const {cat} = useParams();
 
     useEffect(() => {
-        let categoria = "";
-
-        if (cat === "consolas") {
-            categoria = "consola";
-        } else if (cat === "accesorios") {
-            categoria = "accesorios";
-        } else if (cat === "videojuegos") {
-            categoria = "videojuego";
-        } else {
-            categoria = "all";
-        }
-
-        const promesa = new Promise((resolve, reject) => {
-            resolve(productos);
-        });
-
-        promesa.then((respuesta) => {
-            if (categoria === "all"){
-                setItems(respuesta);
-            } else {
-                const nuevosproductos = productos.filter(producto => producto.categoria === categoria);
-                setItems(nuevosproductos);
+        const db = getFirestore();
+        const itemsCollection = collection(db, "products");
+        const queryItems = id ? query(itemsCollection, where("categoria", "==", id)) : itemsCollection;
+        getDocs(queryItems).then((snapShot) => {
+            if (snapShot.size > 0) {
+                setItems(snapShot.docs.map(item => ({id:item.id, ...item.data()})));
             }
         });
-    }, [cat]);
+    }, [id]);
 
     return (
         <div className="container">
