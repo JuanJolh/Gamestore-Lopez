@@ -30,8 +30,8 @@ const ItemCount = ({initial, stock, onAdd}) => {
 
     return (
         <div className="row">
-            <div className="col-md-6">
-                <p><input type="button" className="btn btn-primary" value="-" onClick={() => {menoscantidad(counter - 1)}} />   {counter}  <input type="button" className="btn btn-primary" value="+" onClick={() => {mascantidad(counter + 1)}} /></p>
+            <div className="col-md-6 text-center">
+                <p><input type="button" className="btn btn-primary " value="-" onClick={() => {menoscantidad(counter - 1)}} />   {counter}  <input type="button" className="btn btn-primary" value="+" onClick={() => {mascantidad(counter + 1)}} /></p>
                 <p><input type="button" className="btn btn-primary" value="Agregar" onClick={() => {agregarProductos()}} /></p>
             </div>        
         </div>
